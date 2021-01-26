@@ -1,0 +1,42 @@
+<!-- dialog-box.component.html -->
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+
+
+  <div *ngIf="action != 'Delete'; else elseTemplate">
+    <mat-form-field appearance="fill">
+      <mat-label>Year</mat-label>
+      <input matInput [(ngModel)]="local_data.season" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Set</mat-label>
+      <input matInput [(ngModel)]="local_data.set" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Manufacturer</mat-label>
+      <input matInput [(ngModel)]="local_data.manufacturer" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Player</mat-label>
+      <input matInput [(ngModel)]="local_data.player" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Card Number</mat-label>
+      <input matInput [(ngModel)]="local_data.card_number" required>
+    </mat-form-field>
+  </div>
+
+  <ng-template #elseTemplate>
+    Remove <b>{{local_data.season}} {{ local_data.set}} {{local_data.player}}</b>
+    from collection?
+  </ng-template>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
